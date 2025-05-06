@@ -17,7 +17,8 @@ type = "ui_extension"
 
 [[extensions.targeting]]
 module = "./src/Checkout.jsx"
-target = "purchase.checkout.block.render"
+target = "purchase.checkout.shipping-option-list.render-after"
+export = "purchaseCheckoutShippingOptionListRenderAfter"
 
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.
