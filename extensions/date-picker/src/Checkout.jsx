@@ -31,10 +31,10 @@ export default function Extension() {
     let today = new Date();
 
     const yesterday1 = new Date(today);
-    yesterday1.setDate(today.setDate() - 1);
+    yesterday1.setDate(today.getDate() - 1); // Use getDate() to avoid modifying today
 
     const tomorrow = new Date(today);
-    tomorrow.setDate(today.setDate() + 1);
+    tomorrow.setDate(today.getDate() + 1); // Use getDate() to avoid modifying today
 
     const deliveryDate = today.getDay() === 0 ? tomorrow : today;
 
@@ -42,8 +42,8 @@ export default function Extension() {
     setYesterday(formatDate(yesterday1));
   }, []);
 
-  // // Set a function to handle updating a metafield
-  // const applyMetafieldsChange = useApplyMetafieldsChange();
+  // Set a function to handle updating a metafield
+  const applyMetafieldsChange = useApplyMetafieldsChange();
 
   // Set a function to handle the Date Picker component's onChange event
   const handleChangeDate = useCallback((selectedDate) => {
@@ -66,8 +66,8 @@ export default function Extension() {
         onChange={handleChangeDate}
         disabled={['Sunday', { end: yesterday }]}
       />
-      <Text>{ yesterday }, </Text>
-      <Text>{ selectedDate }</Text>
+      {/* <Text>{ yesterday }, </Text>
+      <Text>{ selectedDate }</Text> */}
     </>
   )
 }
